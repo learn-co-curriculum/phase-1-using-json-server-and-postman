@@ -1,5 +1,11 @@
 # Using JSON Server and Postman to Mock Client/Server Communication
 
+## Learning Goals
+
+- Set up JSON Server as a mock backend
+- Use Postman to mimic frontend responses
+- Practice the client/server request/response cycle
+
 ## Introduction
 
 In typical full-stack applications, a frontend (the client) and a backend (the
