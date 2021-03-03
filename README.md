@@ -123,8 +123,8 @@ Open this file in your text editor and paste in the following content:
 }
 ```
 
-Here, we've created one top-level key, `"articles"`, in our JSON, which points to
-an array. This array contains two elements, both an object with three keys,
+Here, we've created one top-level key, `"articles"`, in our JSON, which points
+to an array. This array contains two elements, both objects with three keys,
 `"id"`, `"title"`, and `"content"`. Our first goal will be to access this data.
 
 ## Start the Server
@@ -163,14 +163,14 @@ associated with `articles` in our data, an array containing two objects:
 ]
 ```
 
-We can go even further - notice the `"id"` key that is listed. Instead of just
+We can go even further — notice the `"id"` key that is listed. Instead of just
 going to `/articles`, we can append the value of `"id"` to the end of the URL:
 
 ```text
 http://localhost:3000/articles/1
 ```
 
-Now, we instead of an array, we get the object inside of it:
+Now, instead of an array, we get the object inside of it:
 
 ```js
 {
@@ -203,9 +203,12 @@ To get the Postman app, head over to
 There is a web version of Postman, but this will not work with our `localhost`
 server.
 
-Follow the installation process for the Postman app (you may need to sign up for
-a free account). Once installed, open the app and you should see a bar starting
-with **GET** where it states _Enter request URL_.
+Once it's downloaded and installed, open the app. You should see a screen
+inviting you to create an account or sign in. At the bottom of that screen,
+click the "Skip and go to the app" link. On the next screen, you should see a
+"Get Started" section on the right side; click the first option: "Create a
+request". You should then see an input field starting with **GET** and
+containing the placeholder text _Enter request URL_.
 
 ![Get request bar](https://curriculum-content.s3.amazonaws.com/js/postman-get-request.png)
 
@@ -216,10 +219,10 @@ We're now ready to send requests to our server.
 Here, we'll write in the URL we previously used to get our JSON server data,
 `http://localhost:3000/articles/1`.
 
-![localhost entered](https://curriculum-content.s3.amazonaws.com/js/postman-localhost.png)
+![localhost entered](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-request.png)
 
 Once entered, hit the **Send** button. If everything is working, you should see
-the same article data from earlier, an object with three keys, `"id"`, `"title"`,
+the same article data from earlier, an object with three keys: `"id"`, `"title"`,
 and `"content"`. You're now performing the full request/response cycle using our
 tools! Let's explore what is happening.
 
@@ -244,17 +247,17 @@ Depending on what we need, we can change out the details of our request. Imagine
 we are building a local news site containing many articles. Instead of
 requesting just the article with an ID of `1`, we might just send a request for
 `/articles` and get everything available from the server. In complex webpages,
-we may send requests to both depending on what page is being accessed - we
+we may send requests to both depending on what page is being accessed — we
 might have an index page of all article titles, and when a title is clicked,
 we'd send a request for a single article.
 
 ## Sending Data to our JSON Server from Postman
 
 We've now seen how a GET HTTP request works, so let's move on to a POST request.
-POST requests are used when we want to _send data to__ a server. 
+POST requests are used when we want to _send data to_ a server.
 
-> **Note:** There are a couple of other HTTP request options for sending data,
-> PUT and PATCH, but for simplicity, we'll just focus on POST requests for now.
+> **Note:** There are a couple of other HTTP request options for sending data —
+> PUT and PATCH — but for simplicity, we'll just focus on POST requests for now.
 
 Continuing our news site example, let's say we've written a new article and
 want to add it to the site. A POST request allows us to send the contents of
@@ -282,7 +285,11 @@ us, so we don't need to worry about including one.
 
 Finally, before we can send our request, we need to provide the data we want to
 send. In Postman, just below the URL bar, click the **Body** tab, then choose
-the **raw** option. In the panel just below, write in the following JSON:
+the **raw** option, and select **JSON** from the drop-down menu.
+
+![postman post]()
+
+In the code box just below these options, write in the following JSON:
 
 ```js
 {
@@ -321,7 +328,7 @@ Although we haven't learned how to build our own backends yet, JSON server can
 act as a placeholder, enabling us to learn the first half of the
 request/response cycle without having to worry about a backend. Also,
 because JSON Server follows RESTful conventions that are widely used throughout
-the internet, we'll start to become familiar with how a server resources
+the internet, we'll start to become familiar with how server resources
 _should_ be structured long before we create our own.
 
 We encourage you to try creating your own resources in `db.json`. A few quick
@@ -332,7 +339,7 @@ notes about setting resources up:
 - The value should be either an array or an object. Try both to see how they
   differ!
 
-With JSON Server, you'll now be able to design frontends that persist data!
+With JSON Server, you'll now be able to design front ends that persist data!
 
 ## Resources
 
