@@ -210,7 +210,7 @@ click the "Skip and go to the app" link. On the next screen, you should see a
 request". You should then see an input field starting with **GET** and
 containing the placeholder text _Enter request URL_.
 
-![Get request bar](https://curriculum-content.s3.amazonaws.com/js/postman-get-request.png)
+![Get request bar](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/get-request-bar.png)
 
 We're now ready to send requests to our server.
 
@@ -301,7 +301,7 @@ In the code box just below these options, write in the following JSON:
 Note that we don't need to wrap the contents in quotes and left out the ID
 key/value. Postman will handle these for us.
 
-![postman post example](https://curriculum-content.s3.amazonaws.com/js/postman-post.png)
+![postman post example](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post-body.png)
 
 When ready, click **Send**. In the terminal, we should see JSON Server
 recognizing the request. In Postman, we'll see the server's response in the lower panel:
