@@ -18,7 +18,7 @@ cycle is a critical piece of web development and the backbone of most modern
 websites.
 
 In the next lessons, we'll start to explore the first half of this
-request/response cycle - initiating requests from the frontend. Before we start
+request/response cycle — initiating requests from the frontend. Before we start
 practicing in JavaScript, though, it would be helpful if we could explore how
 this cycle works. Luckily, we have some tools that can mimic both frontend
 requests and backend responses. For the frontend, we have [Postman][postman], an
@@ -124,7 +124,7 @@ Open this file in your text editor and paste in the following content:
 ```
 
 Here, we've created one top-level key, `"articles"`, in our JSON, which points
-to an array. This array contains two elements, both objects with three keys,
+to an array. This array contains two elements, both objects with three keys:
 `"id"`, `"title"`, and `"content"`. Our first goal will be to access this data.
 
 ## Start the Server
@@ -142,7 +142,7 @@ that you can access the server at `http://localhost:3000`.
 
 Open your browser and paste this URL in. If the server is running correctly, you
 should be presented with a page of information provided by JSON Server. On this
-page, you'll see a **Resources** section that lists one resource - `/articles`. The
+page, you'll see a **Resources** section that lists one resource: `/articles`. The
 server has read the `db.json` file and found our `articles` key, turning it into a
 resource. Click `/articles` and you will be navigated to a new page,
 `http://localhost:3000/articles`. Instead of a page of info, you'll see the value
@@ -227,7 +227,7 @@ and `"content"`. You're now performing the full request/response cycle using our
 tools! Let's explore what is happening.
 
 When you click **Send** on Postman, you send a request to the URL you provided.
-This is a **GET** request - a request for data from a resource. Our JSON server
+This is a **GET** request — a request for data from a resource. Our JSON server
 is actively listening for these requests. If you look at your terminal where
 JSON server is running, you will see that the server has recognized your GET
 request, displaying something similar to this:
@@ -273,7 +273,7 @@ request options and switch over to POST.
 Second, we need to adjust the URL we're using. In this particular case, we're
 sending content that should become a _new_ article. Because of this, we don't
 want to use a specific ID value in the URL. Instead, we'll send a request to
-`/articles` instead:
+`/articles`:
 
 ```js
 http://localhost:3000/articles
@@ -287,7 +287,7 @@ Finally, before we can send our request, we need to provide the data we want to
 send. In Postman, just below the URL bar, click the **Body** tab, then choose
 the **raw** option, and select **JSON** from the drop-down menu.
 
-![postman post]()
+![postman post](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post.png)
 
 In the code box just below these options, write in the following JSON:
 
@@ -339,7 +339,7 @@ notes about setting resources up:
 - The value should be either an array or an object. Try both to see how they
   differ!
 
-With JSON Server, you'll now be able to design front ends that persist data!
+With JSON Server, you'll now be able to design frontends that persist data!
 
 ## Resources
 
