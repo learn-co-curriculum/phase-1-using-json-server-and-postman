@@ -98,6 +98,15 @@ directory on your computer. Alternatively, if you remove the `-g` option from
 this command but are in a folder with a `package.json` file, `json-server` will
 be added as a dependency in the file.
 
+> **Note**: For users of the [Live Server VSCode extension][live-server], you'll
+> need to do a bit of extra configuration so that the `json-server` plays nicely
+> with Live Server in future lessons. Follow the steps in 
+> [this gist][live-server settings] (you'll only need to do this once), then 
+> come back to this lesson.
+
+[live-server]: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+[live-server settings]: https://gist.github.com/ihollander/cc5f36c6447d15dea6a16f68d82aacf7
+
 Next, we'll need to create a file that will act as our data storage.
 
 ```js
