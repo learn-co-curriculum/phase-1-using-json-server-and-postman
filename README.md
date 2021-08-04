@@ -47,8 +47,8 @@ it a great choice for our purposes:
 Below is an example of what a piece of JSON looks like when sent from client to
 server (or vice versa):
 
-```js
-'{"name": "Tesla", "occupation": "Inventor"}'
+```json
+{ "name": "Tesla", "occupation": "Inventor" }
 ```
 
 The data above is a `String`, but you can see that it contains what looks like
@@ -60,7 +60,7 @@ larger `String`. Numbers are the only exception to this.
 When working with JSON, the outside quotes are not always shown. Instead of a
 single line like above, we may see JSON like this:
 
-```js
+```json
 {
   "name": "Tesla",
   "occupation": "Inventor"
@@ -89,7 +89,7 @@ data to practice with.
 
 First, we'll install JSON Server globally on your machine:
 
-```js
+```sh
 npm install -g json-server
 ```
 
@@ -100,8 +100,8 @@ be added as a dependency in the file.
 
 > **Note**: For users of the [Live Server VSCode extension][live-server], you'll
 > need to do a bit of extra configuration so that the `json-server` plays nicely
-> with Live Server in future lessons. Follow the steps in 
-> [this gist][live-server settings] (you'll only need to do this once), then 
+> with Live Server in future lessons. Follow the steps in
+> [this gist][live-server settings] (you'll only need to do this once), then
 > come back to this lesson.
 
 [live-server]: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
@@ -109,13 +109,13 @@ be added as a dependency in the file.
 
 Next, we'll need to create a file that will act as our data storage.
 
-```js
+```sh
 touch db.json
 ```
 
 Open this file in your text editor and paste in the following content:
 
-```js
+```json
 {
   "articles": [
     {
@@ -141,7 +141,7 @@ to an array. This array contains two elements, both objects with three keys:
 To start JSON Server, run the following command from the same directory that
 `db.json` is in:
 
-```js
+```sh
 json-server --watch db.json
 ```
 
@@ -151,26 +151,29 @@ that you can access the server at `http://localhost:3000`.
 
 Open your browser and paste this URL in. If the server is running correctly, you
 should be presented with a page of information provided by JSON Server. On this
-page, you'll see a **Resources** section that lists one resource: `/articles`. The
-server has read the `db.json` file and found our `articles` key, turning it into a
-resource. Click `/articles` and you will be navigated to a new page,
-`http://localhost:3000/articles`. Instead of a page of info, you'll see the value
-associated with `articles` in our data, an array containing two objects:
+page, you'll see a **Resources** section that lists one resource: `/articles`.
+The server has read the `db.json` file and found our `articles` key, turning it
+into a resource. Click `/articles` and you will be navigated to a new page,
+`http://localhost:3000/articles`. Instead of a page of info, you'll see the
+value associated with `articles` in our data, an array containing two objects:
 
-```js
+```json
 [
   {
     "id": 1,
     "title": "Example Article",
-    "content": "This is an example."
+    "content": "This is an example.",
   },
   {
     "id": 2,
     "title": "Second Article",
-    "content": "This is also an example."
-  }
-]
+    "content": "This is also an example.",
+  },
+];
 ```
+
+> **Note**: It's recommended that you use a browser extension such as
+> [JSON Viewer][json viewer] to format the JSON string in the browser.
 
 We can go even further — notice the `"id"` key that is listed. Instead of just
 going to `/articles`, we can append the value of `"id"` to the end of the URL:
@@ -181,7 +184,7 @@ http://localhost:3000/articles/1
 
 Now, instead of an array, we get the object inside of it:
 
-```js
+```json
 {
   "id": 1,
   "title": "Example Article",
@@ -231,9 +234,9 @@ Here, we'll write in the URL we previously used to get our JSON server data,
 ![localhost entered](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-request.png)
 
 Once entered, hit the **Send** button. If everything is working, you should see
-the same article data from earlier, an object with three keys: `"id"`, `"title"`,
-and `"content"`. You're now performing the full request/response cycle using our
-tools! Let's explore what is happening.
+the same article data from earlier, an object with three keys: `"id"`,
+`"title"`, and `"content"`. You're now performing the full request/response
+cycle using our tools! Let's explore what is happening.
 
 When you click **Send** on Postman, you send a request to the URL you provided.
 This is a **GET** request — a request for data from a resource. Our JSON server
@@ -256,9 +259,9 @@ Depending on what we need, we can change out the details of our request. Imagine
 we are building a local news site containing many articles. Instead of
 requesting just the article with an ID of `1`, we might just send a request for
 `/articles` and get everything available from the server. In complex webpages,
-we may send requests to both depending on what page is being accessed — we
-might have an index page of all article titles, and when a title is clicked,
-we'd send a request for a single article.
+we may send requests to both depending on what page is being accessed — we might
+have an index page of all article titles, and when a title is clicked, we'd send
+a request for a single article.
 
 ## Sending Data to our JSON Server from Postman
 
@@ -268,15 +271,15 @@ POST requests are used when we want to _send data to_ a server.
 > **Note:** There are a couple of other HTTP request options for sending data —
 > PUT and PATCH — but for simplicity, we'll just focus on POST requests for now.
 
-Continuing our news site example, let's say we've written a new article and
-want to add it to the site. A POST request allows us to send the contents of
-this new article, along with any other details we want to include, like the
-title. As long as we've structured the request correctly, JSON Server will
-receive the request, recognize it as a POST request and attempt to store the
-article information in the 'database.'
+Continuing our news site example, let's say we've written a new article and want
+to add it to the site. A POST request allows us to send the contents of this new
+article, along with any other details we want to include, like the title. As
+long as we've structured the request correctly, JSON Server will receive the
+request, recognize it as a POST request and attempt to store the article
+information in the 'database.'
 
-To send data to our server, first, we need to switch our Postman request from GET
-to POST. Click on GET beside the URL bar to display a drop-down menu of HTTP
+To send data to our server, first, we need to switch our Postman request from
+GET to POST. Click on GET beside the URL bar to display a drop-down menu of HTTP
 request options and switch over to POST.
 
 Second, we need to adjust the URL we're using. In this particular case, we're
@@ -284,7 +287,7 @@ sending content that should become a _new_ article. Because of this, we don't
 want to use a specific ID value in the URL. Instead, we'll send a request to
 `/articles`:
 
-```js
+```txt
 http://localhost:3000/articles
 ```
 
@@ -300,7 +303,7 @@ the **raw** option, and select **JSON** from the drop-down menu.
 
 In the code box just below these options, write in the following JSON:
 
-```js
+```json
 {
   "title": "Third Article",
   "content": "Another example!"
@@ -313,9 +316,10 @@ key/value. Postman will handle these for us.
 ![postman post example](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post-body.png)
 
 When ready, click **Send**. In the terminal, we should see JSON Server
-recognizing the request. In Postman, we'll see the server's response in the lower panel:
+recognizing the request. In Postman, we'll see the server's response in the
+lower panel:
 
-```js
+```json
 {
   "title": "Third Article",
   "content": "Another example!",
@@ -335,10 +339,10 @@ Congratulations, you've persisted data to `db.json`!
 
 Although we haven't learned how to build our own backends yet, JSON server can
 act as a placeholder, enabling us to learn the first half of the
-request/response cycle without having to worry about a backend. Also,
-because JSON Server follows RESTful conventions that are widely used throughout
-the internet, we'll start to become familiar with how server resources
-_should_ be structured long before we create our own.
+request/response cycle without having to worry about a backend. Also, because
+JSON Server follows RESTful conventions that are widely used throughout the
+internet, we'll start to become familiar with how server resources _should_ be
+structured long before we create our own.
 
 We encourage you to try creating your own resources in `db.json`. A few quick
 notes about setting resources up:
@@ -361,3 +365,4 @@ With JSON Server, you'll now be able to design frontends that persist data!
 [json server]: https://www.npmjs.com/package/json-server
 [status]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 [postman]: https://www.postman.com/downloads/
+[json viewer]: https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=en-US
