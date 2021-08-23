@@ -9,13 +9,12 @@
 ## Introduction
 
 In typical full-stack applications, a frontend (the client) and a backend (the
-server) work together. The frontend initiates communication, often
-either asking for data or sending some data to be stored. The backend is
-actively listening for these requests, and when one is received, it will do some
-work for us and send a response back. This response may include requested data,
-or it could include a confirmation that data was stored. This request/response
-cycle is a critical piece of web development and the backbone of most modern
-websites.
+server) work together. The frontend initiates communication, often either asking
+for data or sending some data to be stored. The backend is actively listening
+for these requests, and when one is received, it will do some work for us and
+send a response back. This response may include requested data, or it could
+include a confirmation that data was stored. This request/response cycle is a
+critical piece of web development and the backbone of most modern websites.
 
 In the next lessons, we'll start to explore the first half of this
 request/response cycle — initiating requests from the frontend. Before we start
@@ -26,8 +25,8 @@ app that can be used to build requests without writing code. For the backend, we
 have [JSON Server][json server], a Node application that mimics the behavior of
 a full backend server.
 
-Combined, we can practice sending requests from Postman to the JSON server and see
-how the server responds.
+Combined, we can practice sending requests from Postman to the JSON server and
+see how the server responds.
 
 ## Review: What is JSON Again?
 
@@ -89,8 +88,8 @@ data to practice with.
 
 First, we'll install JSON Server globally on your machine:
 
-```sh
-npm install -g json-server
+```console
+$ npm install -g json-server
 ```
 
 With the command above, you should now be able to spin up a mock server from any
@@ -109,8 +108,8 @@ be added as a dependency in the file.
 
 Next, we'll need to create a file that will act as our data storage.
 
-```sh
-touch db.json
+```console
+$ touch db.json
 ```
 
 Open this file in your text editor and paste in the following content:
@@ -141,8 +140,8 @@ to an array. This array contains two elements, both objects with three keys:
 To start JSON Server, run the following command from the same directory that
 `db.json` is in:
 
-```sh
-json-server --watch db.json
+```console
+$ json-server --watch db.json
 ```
 
 When run, you'll see some messaging about how to access our JSON data. By
