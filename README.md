@@ -46,8 +46,8 @@ it a great choice for our purposes:
 Below is an example of what a piece of JSON looks like when sent from client to
 server (or vice versa):
 
-```json
-{ "name": "Tesla", "occupation": "Inventor" }
+```text
+'{ "name": "Tesla", "occupation": "Inventor" }'
 ```
 
 The data above is a `String`, but you can see that it contains what looks like
