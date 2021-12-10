@@ -47,7 +47,7 @@ Below is an example of what a piece of JSON looks like when sent from client to
 server (or vice versa):
 
 ```text
-'{ "name": "Tesla", "occupation": "Inventor" }'
+'{ "name": "Annie Easley", "occupation": "Computer Scientist" }'
 ```
 
 The data above is a `String`, but you can see that it contains what looks like
@@ -61,8 +61,8 @@ single line like above, we may see JSON like this:
 
 ```json
 {
-  "name": "Tesla",
-  "occupation": "Inventor"
+  "name": "Annie Easley",
+  "occupation": "Computer Scientist"
 }
 ```
 
