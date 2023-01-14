@@ -99,12 +99,14 @@ be added as a dependency in the file.
 
 > **Note**: For users of the [Live Server VSCode extension][live-server], you'll
 > need to do a bit of extra configuration so that the `json-server` plays nicely
-> with Live Server in future lessons. Follow the steps in
-> [this gist][live-server settings] (you'll only need to do this once), then
-> come back to this lesson.
+> with Live Server in future lessons. Follow the steps in [this
+> gist][live-server settings] (you'll only need to do this once), then come back
+> to this lesson.
 
-[live-server]: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
-[live-server settings]: https://gist.github.com/ihollander/cc5f36c6447d15dea6a16f68d82aacf7
+[live-server]:
+  https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+[live-server settings]:
+  https://gist.github.com/ihollander/cc5f36c6447d15dea6a16f68d82aacf7
 
 Next, we'll need to create a file that will act as our data storage.
 
@@ -145,8 +147,8 @@ $ json-server --watch db.json
 ```
 
 When run, you'll see some messaging about how to access our JSON data. By
-default, JSON Server will start up on port `3000`. You should see a notice
-that you can access the server at `http://localhost:3000`.
+default, JSON Server will start up on port `3000`. You should see a notice that
+you can access the server at `http://localhost:3000`.
 
 Open your browser and paste this URL in. If the server is running correctly, you
 should be presented with a page of information provided by JSON Server. On this
@@ -171,8 +173,8 @@ value associated with `articles` in our data, an array containing two objects:
 ];
 ```
 
-> **Note**: It's recommended that you use a browser extension such as
-> [JSON Viewer][json viewer] to format the JSON string in the browser.
+> **Note**: It's recommended that you use a browser extension such as [JSON
+> Viewer][json viewer] to format the JSON string in the browser.
 
 We can go even further — notice the `"id"` key that is listed. Instead of just
 going to `/articles`, we can append the value of `"id"` to the end of the URL:
@@ -334,6 +336,13 @@ As one final confirmation, navigate to your `db.json` file and open it up. You
 should see that the file has changed to include your newly submitted content!
 Congratulations, you've persisted data to `db.json`!
 
+## Submit Using CodeGrade
+
+Once you're done, be sure to commit and push your code up to GitHub, then submit
+the assignment using CodeGrade. Even though this lab does not have tests, it
+must still be submitted through CodeGrade in order to be marked as complete in
+Canvas.
+
 ## Conclusion
 
 Although we haven't learned how to build our own backends yet, JSON server can
@@ -364,4 +373,5 @@ With JSON Server, you'll now be able to design frontends that persist data!
 [json server]: https://www.npmjs.com/package/json-server
 [status]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 [postman]: https://www.postman.com/downloads/
-[json viewer]: https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=en-US
+[json viewer]:
+  https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=en-US
