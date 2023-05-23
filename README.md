@@ -6,24 +6,33 @@
 - Use Postman to mimic frontend responses
 - Practice the client/server request/response cycle
 
+## Setup
+
+This is a code along lesson. Please fork and clone this lesson down to your
+computer so that you can follow along with the reading.
+
 ## Introduction
 
 In typical full-stack applications, a frontend (the client) and a backend (the
-server) work together. The frontend initiates communication, often either asking
-for data or sending some data to be stored. The backend is actively listening
-for these requests, and when one is received, it will do some work for us and
-send a response back. This response may include requested data, or it could
-include a confirmation that data was stored. This request/response cycle is a
-critical piece of web development and the backbone of most modern websites.
+server) work together.
 
-In the next lessons, we'll start to explore the first half of this
+The frontend initiates communication, often either asking for data or sending
+some data to be stored. The backend is actively listening for these requests,
+and when one is received, it will do some work for us and send a response back.
+
+This response may include requested data, or it could include a confirmation
+that data was stored. This request/response cycle is a critical piece of web
+development and the backbone of most modern websites.
+
+In the upcoming lessons, we'll start to explore the first half of this
 request/response cycle — initiating requests from the frontend. Before we start
-practicing in JavaScript, though, it would be helpful if we could explore how
-this cycle works. Luckily, we have some tools that can mimic both frontend
-requests and backend responses. For the frontend, we have [Postman][postman], an
-app that can be used to build requests without writing code. For the backend, we
-have [JSON Server][json server], a Node application that mimics the behavior of
-a full backend server.
+practicing in JavaScript, though, we need to explore how this cycle works.
+
+Luckily, we have some tools that can mimic both frontend requests and backend
+responses. For the frontend, we have [Postman][postman], an app that can be used
+to build requests without writing code. For the backend, we have [JSON
+Server][json server], a Node application that mimics the behavior of a full
+backend server.
 
 Combined, we can practice sending requests from Postman to the JSON server and
 see how the server responds.
@@ -31,17 +40,19 @@ see how the server responds.
 ## Review: What is JSON Again?
 
 JSON, JavaScript Object Notation, is a _data interchange format_. We use JSON to
-send structured data between frontends and backends. There are a few formats
-available to handle this task, but JSON has some specific advantages that make
-it a great choice for our purposes:
+send structured data between clients and servers.
 
-- It is human-readable. JSON data is stored as a `String`, but structured in a
-  way that looks very similar to a JavaScript object.
-- It is easy to convert into a JavaScript object. JavaScript has built-in
+There are a few formats available to handle this task, but JSON has some
+specific advantages that make it a great choice for our purposes:
+
+- **It is human-readable**: JSON data is stored as a `String`, but structured in
+  a way that looks very similar to a JavaScript object.
+- **It is easy to convert into a JavaScript object**: JavaScript has built-in
   methods for turning objects into JSON and vice versa. Very handy!
-- Despite having JavaScript in the name, the format is compatible with many
-  programming languages. Languages like Ruby and Python have their own methods
-  for handling JSON and converting it into object-like data structures.
+- Despite having JavaScript in the name, **the format is compatible with many
+programming languages**: Common backend languages like Ruby and Python have
+  their own methods for handling JSON and converting it into object-like data
+  structures.
 
 Below is an example of what a piece of JSON looks like when sent from client to
 server (or vice versa):
@@ -50,11 +61,15 @@ server (or vice versa):
 '{ "name": "Annie Easley", "occupation": "Computer Scientist" }'
 ```
 
-The data above is a `String`, but you can see that it contains what looks like
-key/value pairs. Notice that the keys and values are both wrapped in quotes
-while other characters, `{`, `}`, and `:`, are not. This is required syntax for
-JSON. All text-based data, even keys, must be wrapped in quotes within the
-larger `String`. Numbers are the only exception to this.
+The data above is a `String`, it's a string that contains what looks like
+key/value pairs. All JSON is like this - a string that contains notation that
+mimics JavaScript data structures, like objects and arrays. Hence JavaScript
+**Object Notation** - JSON.
+
+Notice that the keys and values are both wrapped in quotes while other
+characters, `{`, `}`, and `:`, are not. This is required syntax for JSON. All
+text-based data, even keys, must be wrapped in quotes within the larger
+`String`. Numbers are the only exception to this rule.
 
 When working with JSON, the outside quotes are not always shown. Instead of a
 single line like above, we may see JSON like this:
@@ -72,14 +87,17 @@ correctly.
 
 ## What is JSON Server?
 
-JSON Server is a freely available Node package that can turn a JSON file on your
-computer into mock data storage. When JSON Server is running, we can send
-requests to get data from storage or add data to it, as though we were talking
-to a server with a database.
+JSON Server is a freely available tool that can be included as a Node package in
+a JavaScript project. It can turn a JSON file on your computer into mock data
+storage.
 
-A huge benefit of JSON Server is that we don't have to spend much time setting
-the mock server up, allowing us to focus on developing the frontend of an
-application first.
+When JSON Server is running, we can send requests to get data from storage or
+add data to it, as though we were talking to a server with a database. It allows
+us to build a Frontend application that includes code for communicating with a
+server without actually needing a server!
+
+This frees us up to focus on writing Frontend code without having to spend a
+long time setting up a mock server.
 
 ## Setting up JSON Server
 
@@ -108,7 +126,8 @@ be added as a dependency in the file.
 [live-server settings]:
   https://gist.github.com/ihollander/cc5f36c6447d15dea6a16f68d82aacf7
 
-Next, we'll need to create a file that will act as our data storage.
+Next, we'll need to create a file that will act as our data storage. We'll
+create it within the repository that you cloned down in this code along.
 
 ```console
 $ touch db.json
@@ -134,13 +153,14 @@ Open this file in your text editor and paste in the following content:
 ```
 
 Here, we've created one top-level key, `"articles"`, in our JSON, which points
-to an array. This array contains two elements, both objects with three keys:
-`"id"`, `"title"`, and `"content"`. Our first goal will be to access this data.
+to an array. This array contains two elements, both of which objects with three
+keys: `"id"`, `"title"`, and `"content"`. Our first goal will be to access this
+data.
 
 ## Start the Server
 
 To start JSON Server, run the following command from the same directory that
-`db.json` is in:
+your `db.json` file is in:
 
 ```console
 $ json-server --watch db.json
@@ -150,11 +170,24 @@ When run, you'll see some messaging about how to access our JSON data. By
 default, JSON Server will start up on port `3000`. You should see a notice that
 you can access the server at `http://localhost:3000`.
 
-Open your browser and paste this URL in. If the server is running correctly, you
-should be presented with a page of information provided by JSON Server. On this
-page, you'll see a **Resources** section that lists one resource: `/articles`.
-The server has read the `db.json` file and found our `articles` key, turning it
-into a resource. Click `/articles` and you will be navigated to a new page,
+> **Note:** If you see an error saying something like `EADDRESSINUSE`, that
+> likely means you already have something running on port `3000`. It's a good idea
+> to shutdown json-server whenever you switch to working on a different project.
+> You can do so by holding down the `control` button and pressing `C`.
+> If you receive this error, but can't find any other terminals that are running
+> json-server, you can try running the series of commands listed at the bottom
+> of this lesson. If all else fails, you can always restart your computer!
+
+Once json-server is up and running, open your browser and paste the
+`http://localhost:3000` URL in. If the server is running correctly, you should
+be presented with a page of information provided by JSON Server. 
+
+On this page,
+you'll see a **Resources** section that lists one resource: `/articles`. The
+server has read the `db.json` file and found our `articles` key, turning it into
+a resource. 
+
+Click `/articles` and you will be navigated to a new page,
 `http://localhost:3000/articles`. Instead of a page of info, you'll see the
 value associated with `articles` in our data, an array containing two objects:
 
@@ -194,12 +227,13 @@ Now, instead of an array, we get the object inside of it:
 ```
 
 Neat! So what is happening? We won't go into too much detail, but JSON server is
-following [RESTful conventions][rest]. By providing `/articles` followed by `/1`
+following [RESTful conventions][rest].
+
+By providing `/articles` followed by `/1`
 in our URL, JSON Server knows we're asking for a resource called `articles`, and
-within that resource, we're asking for whatever data has an ID of `1`. The
-`articles` content we store in our JSON file could be in any order. JSON Server
+within that resource, we're asking for whatever data has an ID of `1`. JSON Server
 will look through and match the request to an ID and return _that_ content. If
-we change to `2`, we'll get the other data we stored in `articles`.
+we change to `2`, we'll get the data we stored in `articles` that has an ID of `2`.
 
 Leave JSON server running and we'll move on to the next tool, Postman.
 
@@ -223,7 +257,8 @@ click the "Skip and go to the app" link. On the next screen, you should see a
 request". You should then see an input field starting with **GET** and
 containing the placeholder text _Enter request URL_.
 
-![Get request bar](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/get-request-bar.png)
+![Get request
+bar](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/get-request-bar.png)
 
 We're now ready to send requests to our server.
 
@@ -232,7 +267,8 @@ We're now ready to send requests to our server.
 Here, we'll write in the URL we previously used to get our JSON server data,
 `http://localhost:3000/articles/1`.
 
-![localhost entered](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-request.png)
+![localhost
+entered](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-request.png)
 
 Once entered, hit the **Send** button. If everything is working, you should see
 the same article data from earlier, an object with three keys: `"id"`,
@@ -300,7 +336,8 @@ Finally, before we can send our request, we need to provide the data we want to
 send. In Postman, just below the URL bar, click the **Body** tab, then choose
 the **raw** option, and select **JSON** from the drop-down menu.
 
-![postman post](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post.png)
+![postman
+post](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post.png)
 
 In the code box just below these options, write in the following JSON:
 
@@ -314,7 +351,8 @@ In the code box just below these options, write in the following JSON:
 Note that we don't need to wrap the contents in quotes and left out the ID
 key/value. Postman will handle these for us.
 
-![postman post example](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post-body.png)
+![postman post
+example](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post-body.png)
 
 When ready, click **Send**. In the terminal, we should see JSON Server
 recognizing the request. In Postman, we'll see the server's response in the
@@ -361,6 +399,8 @@ notes about setting resources up:
   differ!
 
 With JSON Server, you'll now be able to design frontends that persist data!
+
+## Closing Open Processes
 
 ## Resources
 
