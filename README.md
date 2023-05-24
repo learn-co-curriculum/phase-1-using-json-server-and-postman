@@ -171,21 +171,20 @@ default, JSON Server will start up on port `3000`. You should see a notice that
 you can access the server at `http://localhost:3000`.
 
 > **Note:** If you see an error saying something like `EADDRESSINUSE`, that
-> likely means you already have something running on port `3000`. It's a good idea
-> to shutdown json-server whenever you switch to working on a different project.
-> You can do so by holding down the `control` button and pressing `C`.
+> likely means you already have something running on port `3000`. It's a good
+> idea to shutdown json-server whenever you switch to working on a different
+> project. You can do so by holding down the `control` button and pressing `C`.
 > If you receive this error, but can't find any other terminals that are running
 > json-server, you can try running the series of commands listed at the bottom
 > of this lesson. If all else fails, you can always restart your computer!
 
 Once json-server is up and running, open your browser and paste the
 `http://localhost:3000` URL in. If the server is running correctly, you should
-be presented with a page of information provided by JSON Server. 
+be presented with a page of information provided by JSON Server.
 
-On this page,
-you'll see a **Resources** section that lists one resource: `/articles`. The
-server has read the `db.json` file and found our `articles` key, turning it into
-a resource. 
+On this page, you'll see a **Resources** section that lists one resource:
+`/articles`. The server has read the `db.json` file and found our `articles`
+key, turning it into a resource.
 
 Click `/articles` and you will be navigated to a new page,
 `http://localhost:3000/articles`. Instead of a page of info, you'll see the
@@ -229,11 +228,11 @@ Now, instead of an array, we get the object inside of it:
 Neat! So what is happening? We won't go into too much detail, but JSON server is
 following [RESTful conventions][rest].
 
-By providing `/articles` followed by `/1`
-in our URL, JSON Server knows we're asking for a resource called `articles`, and
-within that resource, we're asking for whatever data has an ID of `1`. JSON Server
-will look through and match the request to an ID and return _that_ content. If
-we change to `2`, we'll get the data we stored in `articles` that has an ID of `2`.
+By providing `/articles` followed by `/1` in our URL, JSON Server knows we're
+asking for a resource called `articles`, and within that resource, we're asking
+for whatever data has an ID of `1`. JSON Server will look through and match the
+request to an ID and return _that_ content. If we change to `2`, we'll get the
+data we stored in `articles` that has an ID of `2`.
 
 Leave JSON server running and we'll move on to the next tool, Postman.
 
@@ -252,15 +251,18 @@ server.
 
 Once it's downloaded and installed, open the app. You should see a screen
 inviting you to create an account or sign in. At the bottom of that screen,
-click the "Skip and go to the app" link. On the next screen, you should see a
-"Get Started" section on the right side; click the first option: "Create a
-request". You should then see an input field starting with **GET** and
-containing the placeholder text _Enter request URL_.
+click the "Skip and go to the app" link.
+
+On the next screen, you should see a "Get Started" section on the right side;
+click the first option: "Create a request".
+
+You should then see an input field starting with **GET** and containing the
+placeholder text _Enter request URL_.
 
 ![Get request
 bar](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/get-request-bar.png)
 
-We're now ready to send requests to our server.
+We're now ready to send requests to our server!
 
 ## Retrieving Data from our JSON Server using Postman
 
@@ -276,29 +278,34 @@ the same article data from earlier, an object with three keys: `"id"`,
 cycle using our tools! Let's explore what is happening.
 
 When you click **Send** on Postman, you send a request to the URL you provided.
-This is a **GET** request — a request for data from a resource. Our JSON server
-is actively listening for these requests. If you look at your terminal where
-JSON server is running, you will see that the server has recognized your GET
-request, displaying something similar to this:
+This is a **GET** request — a request for data from a resource.
+
+Our JSON server is actively listening for these requests. If you look at your
+terminal where JSON server is running, you will see that the server has
+recognized your GET request, displaying something similar to this:
 
 ```text
 GET /articles/1 200 25.666 ms
 ```
 
-JSON Server sees that this is a GET request. It also notes that the request is
-specifically for `/articles/1`. `200` is a [HTTP status code][status] that
-indicates the request was received, accepted and responded to successfully.
-`25.666 ms` is the amount of time it took to complete the request, in
-milliseconds. Back in Postman, we can see the response from our server in the
-lower panel and confirm we received what we expected.
+JSON Server sees that this is a GET request.
+
+It also notes that the request is specifically for `/articles/1`. `200` is a
+[HTTP status code][status] that indicates the request was received, accepted and
+responded to successfully. `25.666 ms` is the amount of time it took to complete
+the request, in milliseconds.
+
+Back in Postman, we can see the response from our server in the lower panel and
+confirm we received what we expected.
 
 Depending on what we need, we can change out the details of our request. Imagine
 we are building a local news site containing many articles. Instead of
 requesting just the article with an ID of `1`, we might just send a request for
-`/articles` and get everything available from the server. In complex webpages,
-we may send requests to both depending on what page is being accessed — we might
-have an index page of all article titles, and when a title is clicked, we'd send
-a request for a single article.
+`/articles` and get everything available from the server.
+
+In complex webpages, we may send requests to both depending on what page is
+being accessed — we might have an index page of all article titles, and when a
+title is clicked, we'd send a request for a single article.
 
 ## Sending Data to our JSON Server from Postman
 
@@ -309,11 +316,13 @@ POST requests are used when we want to _send data to_ a server.
 > PUT and PATCH — but for simplicity, we'll just focus on POST requests for now.
 
 Continuing our news site example, let's say we've written a new article and want
-to add it to the site. A POST request allows us to send the contents of this new
-article, along with any other details we want to include, like the title. As
-long as we've structured the request correctly, JSON Server will receive the
-request, recognize it as a POST request and attempt to store the article
-information in the 'database.'
+to add it to the site.
+
+A POST request allows us to send the contents of this new article, along with
+any other details we want to include, like the title. As long as we've
+structured the request correctly, JSON Server will receive the request,
+recognize it as a POST request and attempt to store the article information in
+the 'database' (our db.json file, in this case).
 
 To send data to our server, first, we need to switch our Postman request from
 GET to POST. Click on GET beside the URL bar to display a drop-down menu of HTTP
@@ -349,7 +358,15 @@ In the code box just below these options, write in the following JSON:
 ```
 
 Note that we don't need to wrap the contents in quotes and left out the ID
-key/value. Postman will handle these for us.
+key/value. Postman will handle the quotes that wrap the contents for us, and
+json-server will create the ID for our new article.
+
+>**Note** While we're not working with real databases at this point, it's
+>important to note that real databases will also take care of creating IDs. IDs
+>are meant to be unique within a database - how are we to know what a unique ID
+>might be when we're creating a new entry in our database? Imagine our database
+>has millions of entries! Databases, on the other hand, can verify that an ID is
+>unique before creating one. Problem solved!
 
 ![postman post
 example](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post-body.png)
