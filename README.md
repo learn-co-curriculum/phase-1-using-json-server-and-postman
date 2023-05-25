@@ -341,6 +341,13 @@ When JSON Server receives the request, it'll recognize it as a POST request and
 automatically add it to the appropriate resource. It'll also assign an ID for
 us, so we don't need to worry about including one.
 
+>**Note** While we're not working with real databases at this point, it's
+>important to note that real databases will also take care of creating IDs. IDs
+>are meant to be unique within a database - how are we to know what a unique ID
+>might be when we're creating a new entry in our database? Imagine our database
+>has millions of entries! Databases, on the other hand, can verify that an ID is
+>unique before creating one. Problem solved!
+
 Finally, before we can send our request, we need to provide the data we want to
 send. In Postman, just below the URL bar, click the **Body** tab, then choose
 the **raw** option, and select **JSON** from the drop-down menu.
@@ -359,14 +366,7 @@ In the code box just below these options, write in the following JSON:
 
 Note that we don't need to wrap the contents in quotes and left out the ID
 key/value. Postman will handle the quotes that wrap the contents for us, and
-json-server will create the ID for our new article.
-
->**Note** While we're not working with real databases at this point, it's
->important to note that real databases will also take care of creating IDs. IDs
->are meant to be unique within a database - how are we to know what a unique ID
->might be when we're creating a new entry in our database? Imagine our database
->has millions of entries! Databases, on the other hand, can verify that an ID is
->unique before creating one. Problem solved!
+json-server will create the ID.
 
 ![postman post
 example](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post-body.png)
@@ -402,10 +402,11 @@ Canvas.
 
 Although we haven't learned how to build our own backends yet, JSON server can
 act as a placeholder, enabling us to learn the first half of the
-request/response cycle without having to worry about a backend. Also, because
-JSON Server follows RESTful conventions that are widely used throughout the
-internet, we'll start to become familiar with how server resources _should_ be
-structured long before we create our own.
+request/response cycle without having to worry about a backend.
+
+Also, because JSON Server follows RESTful conventions that are widely used
+throughout the internet, we'll start to become familiar with how server
+resources _should_ be structured long before we create our own.
 
 We encourage you to try creating your own resources in `db.json`. A few quick
 notes about setting resources up:
@@ -417,7 +418,30 @@ notes about setting resources up:
 
 With JSON Server, you'll now be able to design frontends that persist data!
 
-## Closing Open Processes
+## Handling EADDRESSINUSE
+
+If you're getting the EADDRESSINUSE error and can't find any processes open in
+any of your terminals, you can run the following series of commands.
+
+1. Run the command `lsof -i :PORT-NUMBER` in your terminal.
+   - This is a `bash` command. The first part of the command stands for `list
+    open files`.
+   - The `-i` portion tells our computer that we want to look for open network
+    connections.
+   - The `:PORT-NUMBER` portion tells our computer to look for any type of
+    network connection on that specific port number.
+     - You should input the port number that you're trying to use in place of
+      `PORT-NUMBER` in the command.
+     - Ex: `lsof -i :3000`
+2. You should see an output in your file listing information about the processes
+   running on this port.
+3. Look for the column labelled `PID`. There should be a number listed in this
+   column.
+4. Run the command `kill PID-NUMBER`, where `PID-NUMBER` is the number listed in
+   the `PID` column.
+5. If that still didn't work, trying running `kill -9 PID-NUMBER`.
+6. If, after running these commands, you're still receiving the EADDRESSINUSE
+   error, just restart your computer!
 
 ## Resources
 
