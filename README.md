@@ -121,7 +121,8 @@ be added as a dependency in the file.
 > need to do a bit of extra configuration so that the `json-server` plays nicely
 > with Live Server in future lessons. Follow the steps in [this
 > gist][live-server settings] (you'll only need to do this once), then come back
-> to this lesson.
+> to this lesson. (Windows users - just run `Ctrl + shift + p` when following
+> the instructions.)
 
 [live-server]:
   https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
@@ -174,11 +175,12 @@ you can access the server at `http://localhost:3000`.
 
 > **Note:** If you see an error saying something like `EADDRESSINUSE`, that
 > likely means you already have something running on port `3000`. It's a good
-> idea to shutdown json-server whenever you switch to working on a different
-> project. You can do so by holding down the `control` button and pressing `C`.
-> If you receive this error, but can't find any other terminals that are running
-> json-server, you can try running the series of commands listed at the bottom
-> of this lesson. If all else fails, you can always restart your computer!
+> idea to shut down json-server whenever you switch to working on a different
+> project. You can do so by holding down the `control` button and pressing `C`
+> within the terminal currently running json-server. If you receive this error,
+> but can't find any other terminals that are running json-server, you can try
+> running the series of commands listed at the bottom of this lesson. If all
+> else fails, you can always restart your computer!
 
 Once json-server is up and running, open your browser and paste the
 `http://localhost:3000` URL in. If the server is running correctly, you should
@@ -240,20 +242,20 @@ Leave JSON server running and we'll move on to the next tool, Postman.
 
 ## What is Postman?
 
-As we mentioned, Postman is an application that allows us to mock up frontend
-requests without writing any JavaScript. With Postman, we can practice sending
-requests to our JSON Server.
+Postman is an application that allows us to mock up frontend requests without
+writing any JavaScript. With Postman, we can practice sending requests to our
+JSON Server.
 
 ## Setting up Postman
 
 To get the Postman app, head over to
 [https://www.postman.com/downloads/][postman] and click **Download the App**.
 There is a web version of Postman, but this will not work with our `localhost`
-server.
+server, so we'll be using the app version.
 
-Once it's downloaded and installed, open the app. You should see a screen
-inviting you to create an account or sign in. At the bottom of that screen,
-click the "Skip and go to the app" link.
+Once it's downloaded and installed, open the app. If you see a screen inviting
+you to create an account or sign in, click the "Skip and go to the app" link at
+the bottom.
 
 On the next screen, you should see a "Get Started" section on the right side;
 click the first option: "Create a request".
@@ -340,15 +342,7 @@ http://localhost:3000/articles
 ```
 
 When JSON Server receives the request, it'll recognize it as a POST request and
-automatically add it to the appropriate resource. It'll also assign an ID for
-us, so we don't need to worry about including one.
-
->**Note** While we're not working with real databases at this point, it's
->important to note that real databases will also take care of creating IDs. IDs
->are meant to be unique within a database - how are we to know what a unique ID
->might be when we're creating a new entry in our database? Imagine our database
->has millions of entries! Databases, on the other hand, can verify that an ID is
->unique before creating one. Problem solved!
+automatically add it to the appropriate resource.
 
 Finally, before we can send our request, we need to provide the data we want to
 send. In Postman, just below the URL bar, click the **Body** tab, then choose
@@ -368,10 +362,17 @@ In the code box just below these options, write in the following JSON:
 
 Note that we don't need to wrap the contents in quotes and left out the ID
 key/value. Postman will handle the quotes that wrap the contents for us, and
-json-server will create the ID.
+JSON Server will create the ID.
 
 ![postman post
 example](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-the-server/postman-post-body.png)
+
+>**Note** While we're not working with real databases at this point, it's
+>important to note that real databases will also take care of creating IDs. IDs
+>are meant to be unique within a database - how are we to know what a unique ID
+>might be when we're creating a new entry in our database? Imagine our database
+>has millions of entries! Databases, on the other hand, can verify that an ID is
+>unique before creating one. Problem solved!
 
 When ready, click **Send**. In the terminal, we should see JSON Server
 recognizing the request. In Postman, we'll see the server's response in the
@@ -426,8 +427,8 @@ If you're getting the EADDRESSINUSE error and can't find any processes open in
 any of your terminals, you can run the following series of commands.
 
 1. Run the command `lsof -i :PORT-NUMBER` in your terminal.
-   - This is a `bash` command. The first part of the command stands for `list
-    open files`.
+   - This is a `Bash` command. [Learn more about Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
+   - The first part of the command stands for `list open files`.
    - The `-i` portion tells our computer that we want to look for open network
     connections.
    - The `:PORT-NUMBER` portion tells our computer to look for any type of
@@ -435,7 +436,7 @@ any of your terminals, you can run the following series of commands.
      - You should input the port number that you're trying to use in place of
       `PORT-NUMBER` in the command.
      - Ex: `lsof -i :3000`
-2. You should see an output in your file listing information about the processes
+2. You should see an output in your terminal listing information about the processes
    running on this port.
 3. Look for the column labelled `PID`. There should be a number listed in this
    column.
