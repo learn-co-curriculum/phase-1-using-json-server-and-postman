@@ -174,13 +174,13 @@ default, JSON Server will start up on port `3000`. You should see a notice that
 you can access the server at `http://localhost:3000`.
 
 > **Note:** If you see an error saying something like `EADDRESSINUSE`, that
-> likely means you already have something running on port `3000`. It's a good
-> idea to shut down json-server whenever you switch to working on a different
-> project. You can do so by holding down the `control` button and pressing `C`
-> within the terminal currently running json-server. If you receive this error,
-> but can't find any other terminals that are running json-server, you can try
-> running the series of commands listed at the bottom of this lesson. If all
-> else fails, you can always restart your computer!
+> likely means you already have something running on port `3000`. To avoid this
+> error, it's a good idea to shut down json-server whenever you switch to
+> working on a different project. You can do so by holding down the `control`
+> button and pressing `C` within the terminal currently running json-server. If
+> you receive this error, but can't find any other terminals that are running
+> json-server, you can try running the series of commands listed at the bottom
+> of this lesson. If all else fails, you can always restart your computer!
 
 Once json-server is up and running, open your browser and paste the
 `http://localhost:3000` URL in. If the server is running correctly, you should
@@ -427,7 +427,8 @@ If you're getting the EADDRESSINUSE error and can't find any processes open in
 any of your terminals, you can run the following series of commands.
 
 1. Run the command `lsof -i :PORT-NUMBER` in your terminal.
-   - This is a `Bash` command. [Learn more about Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
+   - This is a `Bash` command. [Learn more about
+     Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
    - The first part of the command stands for `list open files`.
    - The `-i` portion tells our computer that we want to look for open network
     connections.
@@ -436,8 +437,8 @@ any of your terminals, you can run the following series of commands.
      - You should input the port number that you're trying to use in place of
       `PORT-NUMBER` in the command.
      - Ex: `lsof -i :3000`
-2. You should see an output in your terminal listing information about the processes
-   running on this port.
+2. You should see an output in your terminal listing information about the
+   processes running on this port.
 3. Look for the column labelled `PID`. There should be a number listed in this
    column.
 4. Run the command `kill PID-NUMBER`, where `PID-NUMBER` is the number listed in
