@@ -61,10 +61,12 @@ server (or vice versa):
 '{ "name": "Annie Easley", "occupation": "Computer Scientist" }'
 ```
 
-The data above is a `String`, it's a string that contains what looks like
-key/value pairs. All JSON is like this - a string that contains notation that
-mimics JavaScript data structures, like objects and arrays. Hence JavaScript
-**Object Notation** - JSON.
+The data above is a `String`, but it contains what looks like key/value pairs
+within an object.
+
+Whenever we work with JSON, this is what we're working with - strings that
+include notation that mimics JavaScript data structures, like objects and
+arrays. Hence JavaScript **Object Notation** - JSON.
 
 Notice that the keys and values are both wrapped in quotes while other
 characters, `{`, `}`, and `:`, are not. This is required syntax for JSON. All
