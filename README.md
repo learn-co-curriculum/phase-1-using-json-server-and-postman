@@ -3,12 +3,12 @@
 ## Learning Goals
 
 - Set up JSON Server as a mock backend
-- Use Postman to mimic frontend responses
+- Use Postman to mimic front end responses
 - Practice the client/server request/response cycle
 
 ## Setup
 
-This is a code along lesson. Please fork and clone this lesson down to your
+This is a code-along lesson. Please fork and clone this lesson down to your
 computer so that you can follow along with the reading.
 
 ## Introduction
@@ -64,16 +64,16 @@ server (or vice versa):
 The data above is a `String`, but it contains what looks like key/value pairs
 within an object.
 
-Whenever we work with JSON, this is what we're working with - strings that
+Whenever we work with JSON, this is what we're working with — strings that
 include notation that mimics JavaScript data structures, like objects and
-arrays. Hence JavaScript **Object Notation** - JSON.
+arrays. Hence JavaScript **Object Notation** — JSON.
 
 Notice that the keys and values are both wrapped in quotes while other
 characters, `{`, `}`, and `:`, are not. This is required syntax for JSON. All
 text-based data, even keys, must be wrapped in quotes within the larger
 `String`. Numbers are the only exception to this rule.
 
-When working with JSON, the outside quotes are not always shown. Instead of a
+When working with JSON, the outside quotes are not always shown. In addition, instead of a
 single line like above, we may see JSON like this:
 
 ```json
@@ -130,7 +130,7 @@ be added as a dependency in the file.
   https://gist.github.com/ihollander/cc5f36c6447d15dea6a16f68d82aacf7
 
 Next, we'll need to create a file that will act as our data storage. We'll
-create it within the repository that you cloned down in this code along.
+create it within the repository that you cloned down in this code-along.
 
 ```console
 $ touch db.json
@@ -156,7 +156,7 @@ Open this file in your text editor and paste in the following content:
 ```
 
 Here, we've created one top-level key, `"articles"`, in our JSON, which points
-to an array. This array contains two elements, both of which objects with three
+to an array. This array contains two elements, both of which are objects with three
 keys: `"id"`, `"title"`, and `"content"`. Our first goal will be to access this
 data.
 
@@ -238,7 +238,7 @@ for whatever data has an ID of `1`. JSON Server will look through and match the
 request to an ID and return _that_ content. If we change to `2`, we'll get the
 data we stored in `articles` that has an ID of `2`.
 
-Leave JSON server running and we'll move on to the next tool, Postman.
+Leave JSON Server running and we'll move on to the next tool, Postman.
 
 ## What is Postman?
 
@@ -322,11 +322,11 @@ POST requests are used when we want to _send data to_ a server.
 Continuing our news site example, let's say we've written a new article and want
 to add it to the site.
 
-A POST request allows us to send the contents of this new article, along with
-any other details we want to include, like the title. As long as we've
+A POST request allows us to send the title and content of this new article to the 'database' (our db.json file, in this case).
+As long as we've
 structured the request correctly, JSON Server will receive the request,
 recognize it as a POST request and attempt to store the article information in
-the 'database' (our db.json file, in this case).
+the db.json file.
 
 To send data to our server, first, we need to switch our Postman request from
 GET to POST. Click on GET beside the URL bar to display a drop-down menu of HTTP
@@ -360,7 +360,7 @@ In the code box just below these options, write in the following JSON:
 }
 ```
 
-Note that we don't need to wrap the contents in quotes and left out the ID
+Note that we don't need to wrap the contents in quotes and that we left out the ID
 key/value. Postman will handle the quotes that wrap the contents for us, and
 JSON Server will create the ID.
 
@@ -369,7 +369,7 @@ example](https://curriculum-content.s3.amazonaws.com/phase-1/communicating-with-
 
 >**Note** While we're not working with real databases at this point, it's
 >important to note that real databases will also take care of creating IDs. IDs
->are meant to be unique within a database - how are we to know what a unique ID
+>are meant to be unique within a database — how are we to know what a unique ID
 >might be when we're creating a new entry in our database? Imagine our database
 >has millions of entries! Databases, on the other hand, can verify that an ID is
 >unique before creating one. Problem solved!
