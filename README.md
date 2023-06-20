@@ -73,8 +73,8 @@ characters, `{`, `}`, and `:`, are not. This is required syntax for JSON. All
 text-based data, even keys, must be wrapped in quotes within the larger
 `String`. Numbers are the only exception to this rule.
 
-When working with JSON, the outside quotes are not always shown. In addition, instead of a
-single line like above, we may see JSON like this:
+When working with JSON, the outside quotes are not always shown. In addition,
+instead of a single line like above, we may see JSON like this:
 
 ```json
 {
@@ -161,9 +161,9 @@ Open this file in your text editor and paste in the following content:
 ```
 
 Here, we've created one top-level key, `"articles"`, in our JSON, which points
-to an array. This array contains two elements, both of which are objects with three
-keys: `"id"`, `"title"`, and `"content"`. Our first goal will be to access this
-data.
+to an array. This array contains two elements, both of which are objects with
+three keys: `"id"`, `"title"`, and `"content"`. Our first goal will be to access
+this data.
 
 ## Start the Server
 
@@ -326,11 +326,10 @@ POST requests are used when we want to _send data to_ a server.
 Continuing our news site example, let's say we've written a new article and want
 to add it to the site.
 
-A POST request allows us to send the title and content of this new article to the 'database' (our db.json file, in this case).
-As long as we've
-structured the request correctly, JSON Server will receive the request,
-recognize it as a POST request and attempt to store the article information in
-the db.json file.
+A POST request allows us to send the title and content of this new article to
+the 'database' (our db.json file, in this case). As long as we've structured the
+request correctly, JSON Server will receive the request, recognize it as a POST
+request and attempt to store the article information in the db.json file.
 
 To send data to our server, first, we need to switch our Postman request from
 GET to POST. Click on GET beside the URL bar to display a drop-down menu of HTTP
@@ -364,8 +363,8 @@ In the code box just below these options, write in the following JSON:
 }
 ```
 
-Note that we don't need to wrap the contents in quotes and that we left out the ID
-key/value. Postman will handle the quotes that wrap the contents for us, and
+Note that we don't need to wrap the contents in quotes and that we left out the
+ID key/value. Postman will handle the quotes that wrap the contents for us, and
 JSON Server will create the ID.
 
 ![postman post
