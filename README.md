@@ -83,6 +83,11 @@ single line like above, we may see JSON like this:
 }
 ```
 
+Luckily, you will not often need to concern yourself with the specifics of how
+JSON is structured. As mentioned above, we will use built-in tools to convert
+JavaScript objects into JSON and vice versa. However, it is important to
+recognize JSON when you see it.
+
 If you are curious about JSON syntax, there are many JSON validators online like
 [this one](https://jsonlint.com/) that will confirm if your JSON is formatted
 correctly.
@@ -103,26 +108,26 @@ long time setting up a mock server.
 
 ## Setting up JSON Server
 
-To start using JSON Server, we need to install it, then provide a basic set of
+To start using JSON Server, you need to install it, then provide a basic set of
 data to practice with.
 
-First, we'll install JSON Server globally on your machine:
+First, you'll install JSON Server globally on your machine:
 
 ```console
 $ npm install -g json-server
 ```
 
 With the command above, you should now be able to spin up a mock server from any
-directory on your computer. Alternatively, if you remove the `-g` option from
-this command but are in a folder with a `package.json` file, `json-server` will
-be added as a dependency in the file.
+directory on your computer. Alternatively, if you run npm install json-server
+(without the -g option) from inside a folder with a `package.json` file,
+`json-server` will be added as a dependency in the file.
 
 > **Note**: For users of the [Live Server VSCode extension][live-server], you'll
 > need to do a bit of extra configuration so that the `json-server` plays nicely
 > with Live Server in future lessons. Follow the steps in [this
 > gist][live-server settings] (you'll only need to do this once), then come back
-> to this lesson. (Windows users - just run `Ctrl + shift + p` when following
-> the instructions.)
+> to this lesson. (Windows users - just run `control + shift + p` instead of
+> `command + shift + p` when following the instructions.)
 
 [live-server]:
   https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
@@ -173,6 +178,10 @@ When run, you'll see some messaging about how to access our JSON data. By
 default, JSON Server will start up on port `3000`. You should see a notice that
 you can access the server at `http://localhost:3000`.
 
+Once json-server is up and running, open your browser and paste the
+`http://localhost:3000` URL in. If the server is running correctly, you should
+be presented with a page of information provided by JSON Server.
+
 > **Note:** If you see an error saying something like `EADDRESSINUSE`, that
 > likely means you already have something running on port `3000`. To avoid this
 > error, it's a good idea to shut down json-server whenever you switch to
@@ -181,10 +190,6 @@ you can access the server at `http://localhost:3000`.
 > you receive this error, but can't find any other terminals that are running
 > json-server, you can try running the series of commands listed at the bottom
 > of this lesson. If all else fails, you can always restart your computer!
-
-Once json-server is up and running, open your browser and paste the
-`http://localhost:3000` URL in. If the server is running correctly, you should
-be presented with a page of information provided by JSON Server.
 
 On this page, you'll see a **Resources** section that lists one resource:
 `/articles`. The server has read the `db.json` file and found our `articles`
@@ -292,12 +297,11 @@ recognized your GET request, displaying something similar to this:
 GET /articles/1 200 25.666 ms
 ```
 
-JSON Server sees that this is a GET request.
-
-It also notes that the request is specifically for `/articles/1`. `200` is a
-[HTTP status code][status] that indicates the request was received, accepted and
-responded to successfully. `25.666 ms` is the amount of time it took to complete
-the request, in milliseconds.
+JSON Server sees that this is a GET request. It also notes that the request is
+specifically for `/articles/1`. `200` is a [HTTP status code][status] that
+indicates the request was received, accepted and responded to successfully.
+`25.666 ms` is the amount of time it took to complete the request, in
+milliseconds.
 
 Back in Postman, we can see the response from our server in the lower panel and
 confirm we received what we expected.
